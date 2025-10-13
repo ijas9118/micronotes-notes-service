@@ -1,4 +1,4 @@
-import type { TagDTO } from "@/types/dto";
+import type { TagDTO } from "@/types/dto/index.js";
 
 export type ITagService = {
   createTag: (userId: string, tagData: { tagName: string; color: string }) => Promise<TagDTO>;

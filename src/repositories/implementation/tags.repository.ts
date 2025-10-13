@@ -1,12 +1,12 @@
 import { and, eq } from "drizzle-orm";
 import { injectable } from "inversify";
 
-import type { NewTags, Tags } from "@/db/schema";
+import type { NewTags, Tags } from "@/db/schema.js";
 
-import { db } from "@/db";
-import { tags } from "@/db/schema";
+import { db } from "@/db/index.js";
+import { tags } from "@/db/schema.js";
 
-import type { ITagRepository } from "../interfaces/tags.repo.interface";
+import type { ITagRepository } from "../interfaces/tags.repo.interface.js";
 
 @injectable()
 export class TagRepository implements ITagRepository {

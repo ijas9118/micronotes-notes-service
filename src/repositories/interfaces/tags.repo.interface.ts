@@ -1,4 +1,4 @@
-import type { NewTags, Tags } from "@/db/schema";
+import type { NewTags, Tags } from "@/db/schema.js";
 
 export type ITagRepository = {
   create: (tag: NewTags) => Promise<Tags>;

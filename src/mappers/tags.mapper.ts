@@ -1,5 +1,5 @@
-import type { Tags } from "@/db/schema";
-import type { TagDTO } from "@/types/dto";
+import type { Tags } from "@/db/schema.js";
+import type { TagDTO } from "@/types/dto/index.js";
 
 export class TagMapper {
   static toDTO(tag: Tags): TagDTO {

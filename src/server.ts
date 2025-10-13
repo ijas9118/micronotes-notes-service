@@ -1,8 +1,8 @@
 import "reflect-metadata";
 
-import app from "./app";
-import logger from "./configs/logger";
-import env from "./configs/validate-env";
+import app from "./app.js";
+import logger from "./configs/logger.js";
+import env from "./configs/validate-env.js";
 
 const PORT = env.PORT || 3002;
 

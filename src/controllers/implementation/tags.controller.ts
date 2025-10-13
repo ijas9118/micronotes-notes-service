@@ -3,11 +3,11 @@ import type { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { inject, injectable } from "inversify";
 
-import type { ITagService } from "@/services/interfaces/tags.service.interface";
+import type { ITagService } from "@/services/interfaces/tags.service.interface.js";
 
-import TYPES from "@/ioc/types";
+import TYPES from "@/ioc/types.js";
 
-import type { ITagController } from "../interfaces/tags.controller.interface";
+import type { ITagController } from "../interfaces/tags.controller.interface.js";
 
 @injectable()
 export class TagController implements ITagController {

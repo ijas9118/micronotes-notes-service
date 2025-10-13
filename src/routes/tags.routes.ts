@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import type { ITagController } from "@/controllers/interfaces/tags.controller.interface";
+import type { ITagController } from "@/controllers/interfaces/tags.controller.interface.js";
 
-import { container } from "@/ioc/container";
-import TYPES from "@/ioc/types";
-import { authMiddleware } from "@/middlewares/auth.middleware";
+import { container } from "@/ioc/container.js";
+import TYPES from "@/ioc/types.js";
+import { authMiddleware } from "@/middlewares/auth.middleware.js";
 
 const router = Router();
 

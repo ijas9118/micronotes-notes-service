@@ -3,8 +3,9 @@ import express from "express";
 import helmet from "helmet";
 import { StatusCodes } from "http-status-codes";
 
-import errorHandler from "./middlewares/error-handler";
-import tagRouter from "./routes/tags.routes";
+import errorHandler from "./middlewares/error-handler.js";
+import notesRouter from "./routes/notes.routes.js";
+import tagRouter from "./routes/tags.routes.js";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/tags", tagRouter);
+app.use("/notes", notesRouter);
 
 app.use(errorHandler);
 

@@ -1,14 +1,14 @@
 import { StatusCodes } from "http-status-codes";
 import { inject, injectable } from "inversify";
 
-import type { ITagRepository } from "@/repositories/interfaces/tags.repo.interface";
-import type { TagDTO } from "@/types/dto";
+import type { ITagRepository } from "@/repositories/interfaces/tags.repo.interface.js";
+import type { TagDTO } from "@/types/dto/index.js";
 
-import TYPES from "@/ioc/types";
-import { TagMapper } from "@/mappers/tags.mapper";
-import { HttpError } from "@/utils/http-error-class";
+import TYPES from "@/ioc/types.js";
+import { TagMapper } from "@/mappers/tags.mapper.js";
+import { HttpError } from "@/utils/http-error-class.js";
 
-import type { ITagService } from "../interfaces/tags.service.interface";
+import type { ITagService } from "../interfaces/tags.service.interface.js";
 
 @injectable()
 export class TagService implements ITagService {
@@ -47,6 +47,9 @@ export class TagService implements ITagService {
   }
 
   async deleteTag(id: string, userId: string): Promise<void> {
+    const tag = this._tagRepo.findById(id, userId);
+    if (!tag)
+      throw new HttpError("Tag not found", StatusCodes.NOT_FOUND);
     await this._tagRepo.delete(id, userId);
   }
 }

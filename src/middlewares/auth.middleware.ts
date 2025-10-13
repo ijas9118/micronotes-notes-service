@@ -3,9 +3,9 @@ import type { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
 
-import type { JWTPayload } from "@/types";
+import type { JWTPayload } from "@/types/index.js";
 
-import env from "@/configs/validate-env";
+import env from "@/configs/validate-env.js";
 import { HttpError } from "@/utils/http-error-class.js";
 
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {

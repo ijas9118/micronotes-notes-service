@@ -5,3 +5,11 @@ export type TagDTO = {
   color?: string;
   createdAt: Date;
 };
+
+export type NotesDTO = {
+  id: string;
+  userId: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+};
