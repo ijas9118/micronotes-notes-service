@@ -17,6 +17,6 @@ RUN pnpm run build
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 3001
+EXPOSE 3003
 
 ENTRYPOINT ["/entrypoint.sh"]

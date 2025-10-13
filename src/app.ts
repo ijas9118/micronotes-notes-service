@@ -4,6 +4,7 @@ import helmet from "helmet";
 import { StatusCodes } from "http-status-codes";
 
 import errorHandler from "./middlewares/error-handler";
+import tagRouter from "./routes/tags.routes";
 
 const app = express();
 
@@ -19,6 +20,8 @@ app.get("/health", (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+app.use("/tags", tagRouter);
 
 app.use(errorHandler);
 

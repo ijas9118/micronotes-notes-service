@@ -1,3 +1,5 @@
+import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
+
 import { boolean, index, pgTable, primaryKey, text, timestamp, uniqueIndex, uuid, varchar } from "drizzle-orm/pg-core";
 
 export const notes = pgTable("notes", {
@@ -53,3 +55,9 @@ export const noteTags = pgTable("note_tags", {
 }, table => [
   primaryKey({ columns: [table.noteId, table.tagId] }),
 ]);
+
+export type Tags = InferSelectModel<typeof tags>;
+export type NewTags = InferInsertModel<typeof tags>;
+
+export type Notes = InferSelectModel<typeof notes>;
+export type NewNotes = InferInsertModel<typeof notes>;
