@@ -30,9 +30,17 @@ export class NotesController implements INotesController {
 
   getAll = async (req: Request, res: Response) => {
     const userId = req.user?.userId as string;
+    const { page = "1", limit = "10", search = "" } = req.query;
 
-    const notes = await this._notesService.getNotes(userId);
-    res.status(StatusCodes.OK).json({ message: "Notes Fetched", data: notes });
+    const pageNum = Math.max(1, Number(page));
+    const limitNum = Math.max(1, Number(limit));
+
+    const data = await this._notesService.getNotes(userId, {
+      limit: limitNum,
+      offset: (pageNum - 1) * limitNum,
+      search: typeof search === "string" ? search : "",
+    });
+    res.status(StatusCodes.OK).json({ message: "Notes Fetched", data });
   };
 
   update = async (req: Request, res: Response) => {

@@ -13,3 +13,11 @@ export type NotesDTO = {
   content: string;
   createdAt: Date;
 };
+
+export type PaginatedNotesDTO = {
+  notes: NotesDTO[];
+  total: number;
+  limit: number;
+  offset: number;
+  search?: string;
+};

@@ -2,7 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import { inject, injectable } from "inversify";
 
 import type { INotesRepository } from "@/repositories/interfaces/notes.repo.interface.js";
-import type { NotesDTO } from "@/types/dto/index.js";
+import type { NotesDTO, PaginatedNotesDTO } from "@/types/dto/index.js";
 
 import TYPES from "@/ioc/types.js";
 import { NotesMapper } from "@/mappers/notes.mapper.js";
@@ -24,10 +24,18 @@ export class NotesService implements INotesService {
     return NotesMapper.toDTO(note);
   }
 
-  async getNotes(userId: string): Promise<NotesDTO[]> {
-    const notes = await this._notesRepo.findAll(userId);
+  async getNotes(userId: string, params: { limit?: number; offset?: number; search?: string }): Promise<PaginatedNotesDTO> {
+    const { data, total } = await this._notesRepo.findAll(userId, params);
 
-    return notes.map(note => NotesMapper.toDTO(note));
+    const notes = data.map(note => NotesMapper.toDTO(note));
+
+    return {
+      notes,
+      total,
+      limit: params.limit ?? 5,
+      offset: params.offset ?? 0,
+      search: params.search ?? "",
+    };
   }
 
   async getNoteById(id: string, userId: string): Promise<NotesDTO> {

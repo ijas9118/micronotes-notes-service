@@ -38,7 +38,7 @@ export class TagService implements ITagService {
   }
 
   async updateTag(id: string, userId: string, tagData: { tagName?: string; color?: string }): Promise<TagDTO> {
-    const tag = this._tagRepo.findById(id, userId);
+    const tag = this._tagRepo.findByName(userId, tagData.tagName as string);
     if (!tag)
       throw new HttpError("Tag not found", StatusCodes.NOT_FOUND);
 
