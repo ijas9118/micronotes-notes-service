@@ -22,8 +22,8 @@ app.get("/health", (req, res) => {
   });
 });
 
-app.use("/tags", tagRouter);
-app.use("/notes", notesRouter);
+app.use("/api/v1/tags", tagRouter);
+app.use("/api/v1/notes", notesRouter);
 
 app.use(errorHandler);
 

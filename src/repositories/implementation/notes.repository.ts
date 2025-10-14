@@ -1,5 +1,3 @@
-import type { SQL } from "drizzle-orm";
-
 import { and, count, desc, eq, ilike, or } from "drizzle-orm";
 import { injectable } from "inversify";
 
