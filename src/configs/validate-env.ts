@@ -8,6 +8,7 @@ config();
 const EnvSchema = z.object({
   NODE_ENV: z.string().default("development"),
   PORT: z.coerce.number().default(3003),
+  SERVICE_NAME: z.string(),
   LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace"]),
   JWT_SECRET: z.string(),
   DATABASE_URL: z.string(),
